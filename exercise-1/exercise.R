@@ -22,7 +22,10 @@ filter(countries, name_en == "Syrian Arab Republic") %>% select(country_code)
 # Hint: you'll need to use a query parameter
 # Use the `str()` function to print the data of interest
 # See http://www.unhcr.org/en-us/who-we-help.html for details on these terms
-
+query.params <- list(country_of_residence = "USA", country_of_origin = "SYR", year = 2013)
+people <- GET("http://data.unhcr.org/api/stats/persons_of_concern.json", query = query.params)
+people.2 <- fromJSON(content(response, "text"))
+str(people.2)
 
 ## And this was only 2013...
 
